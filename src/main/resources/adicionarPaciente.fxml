@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<StackPane xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.projeto.API.fxml.cadastro.CadastroPacienteController"
+           style="-fx-background-color: #F2F3F5;"
+           prefWidth="520" prefHeight="855">
+
+    <!-- CARD PRINCIPAL -->
+    <VBox alignment="TOP_CENTER"
+          maxWidth="520"
+          spacing="0"
+          style="-fx-background-color: white; -fx-background-radius: 20;
+                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);">
+
+        <!-- CABEÇALHO -->
+        <HBox alignment="CENTER_LEFT" spacing="12"
+              prefHeight="80"
+              style="-fx-background-color: #1976FF; -fx-background-radius: 20 20 0 0;">
+            <padding>
+                <Insets top="0" right="20" bottom="0" left="20"/>
+            </padding>
+
+            <Label text="🏥" style="-fx-font-size: 26; -fx-text-fill: white;" />
+            <Label text="Cadastrar Paciente"
+                   style="-fx-font-size: 24; -fx-text-fill: white; -fx-font-weight: bold;" />
+        </HBox>
+
+        <!-- FORMULÁRIO -->
+        <VBox spacing="18">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <!-- NOME -->
+            <VBox spacing="5">
+                <Label text="Nome Completo" style="-fx-font-weight: bold; -fx-font-size: 14;" />
+                <TextField fx:id="inputNome" promptText="Digite o nome completo" />
+            </VBox>
+
+            <!-- CPF -->
+            <VBox spacing="5">
+                <Label text="CPF" style="-fx-font-weight: bold; -fx-font-size: 14;" />
+                <TextField fx:id="inputCpf" promptText="000.000.000-00" />
+            </VBox>
+
+            <!-- DATA DE NASCIMENTO -->
+            <VBox spacing="5">
+                <Label text="Data de Nascimento" style="-fx-font-weight: bold; -fx-font-size: 14;" />
+                <TextField fx:id="inputNascimento" promptText="DD/MM/AAAA" />
+            </VBox>
+
+            <!-- TELEFONE -->
+            <VBox spacing="5">
+                <Label text="Telefone" style="-fx-font-weight: bold; -fx-font-size: 14;" />
+                <TextField fx:id="inputTelefone" promptText="(00) 00000-0000" />
+            </VBox>
+
+            <!-- EMAIL -->
+            <VBox spacing="5">
+                <Label text="Email" style="-fx-font-weight: bold; -fx-font-size: 14;" />
+                <TextField fx:id="inputEmail" promptText="email@exemplo.com" />
+            </VBox>
+
+            <!-- ENDEREÇO -->
+            <VBox spacing="5">
+                <Label text="Endereço" style="-fx-font-weight: bold; -fx-font-size: 14;" />
+                <TextField fx:id="inputEndereco" promptText="Digite o endereço completo" />
+            </VBox>
+
+        </VBox>
+
+        <!-- BOTÕES -->
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding>
+                <Insets top="10" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Button text="Voltar"
+                    onAction="#voltar"
+                    prefHeight="40"
+                    style="-fx-background-color: #B0B0B0; -fx-text-fill: white;
+                           -fx-font-size: 14; -fx-background-radius: 10;" />
+
+            <Button text="Cadastrar"
+                    onAction="#cadastrarPaciente"
+                    prefHeight="40"
+                    style="-fx-background-color: #1976FF; -fx-text-fill: white;
+                           -fx-font-size: 14; -fx-background-radius: 10;" />
+        </HBox>
+
+    </VBox>
+
+</StackPane>

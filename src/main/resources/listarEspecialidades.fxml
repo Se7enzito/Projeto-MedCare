@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="855" prefWidth="520"
+           xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.projeto.API.fxml.listar.ListarEspecialidadeController"
+           style="-fx-background-color: #F2F3F5;">
+
+    <children>
+
+        <VBox alignment="TOP_CENTER" maxWidth="520"
+              style="-fx-background-color: white; -fx-background-radius: 20;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);">
+
+            <!-- CABEÇALHO -->
+            <HBox alignment="CENTER_LEFT" prefHeight="80" spacing="12"
+                  style="-fx-background-color: #7B1FA2; -fx-background-radius: 20 20 0 0;">
+                <padding><Insets left="20" right="20"/></padding>
+
+                <Label text="📝" style="-fx-font-size: 26; -fx-text-fill: white;"/>
+                <Label text="Lista de Especialidades"
+                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            </HBox>
+
+            <!-- BUSCA -->
+            <VBox spacing="10" style="-fx-padding: 20;">
+                <HBox spacing="10">
+                    <TextField fx:id="inputBusca"
+                               promptText="Buscar por nome..."
+                               style="-fx-background-radius: 10; -fx-font-size: 14;"/>
+                </HBox>
+            </VBox>
+
+            <!-- TABELA -->
+            <VBox spacing="10">
+                <padding><Insets left="20" right="20" bottom="20"/></padding>
+
+                <TableView fx:id="tableEspecialidades" prefHeight="600">
+
+                    <columns>
+                        <TableColumn fx:id="colNome" text="Nome" prefWidth="200"/>
+                        <TableColumn fx:id="colDescricao" text="Descrição" prefWidth="300"/>
+                    </columns>
+
+                </TableView>
+            </VBox>
+
+            <!-- BOTÕES -->
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <padding><Insets top="10" bottom="20" left="20" right="20"/></padding>
+
+                <Button text="Voltar" onAction="#voltar"
+                        style="-fx-background-color: #B0B0B0; -fx-text-fill: white;
+                               -fx-font-size: 14; -fx-background-radius: 10;"
+                        prefHeight="40"/>
+            </HBox>
+
+        </VBox>
+
+    </children>
+
+</StackPane>

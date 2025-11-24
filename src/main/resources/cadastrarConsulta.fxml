@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="855" prefWidth="520"
+           style="-fx-background-color: #F2F3F5;"
+           xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.projeto.API.fxml.cadastro.CadastroConsultaController">
+
+    <children>
+        <VBox alignment="TOP_CENTER" maxWidth="520" spacing="0"
+              style="-fx-background-color: white; -fx-background-radius: 20;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);">
+
+            <!-- CABEÇALHO -->
+            <HBox alignment="CENTER_LEFT" prefHeight="80" spacing="12"
+                  style="-fx-background-color: #1976FF; -fx-background-radius: 20 20 0 0;">
+                <padding>
+                    <Insets left="20" right="20"/>
+                </padding>
+
+                <Label text="📅" style="-fx-font-size: 26; -fx-text-fill: white;"/>
+                <Label text="Cadastrar Consulta"
+                       style="-fx-font-size: 24; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- FORM -->
+            <VBox spacing="18">
+                <padding>
+                    <Insets top="30" bottom="30" left="30" right="30"/>
+                </padding>
+
+                <!-- DATA -->
+                <VBox spacing="5">
+                    <Label text="Data" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <TextField fx:id="inputData" promptText="DD/MM/AAAA"/>
+                </VBox>
+
+                <!-- HORA -->
+                <VBox spacing="5">
+                    <Label text="Hora" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <TextField fx:id="inputHora" promptText="HH:MM"/>
+                </VBox>
+
+                <!-- STATUS -->
+                <VBox spacing="5">
+                    <Label text="Status" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <ChoiceBox fx:id="choiceStatus" prefWidth="300" style="
+                                -fx-background-color: white;
+                                -fx-background-radius: 8;
+                                -fx-border-color: #D0D0D0;
+                                -fx-border-radius: 8;
+                                -fx-border-width: 1.5;
+                                -fx-padding: 5 10;
+                                -fx-font-size: 14;
+                                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);
+                            "/>
+                </VBox>
+
+                <!-- PACIENTE -->
+                <VBox spacing="5">
+                    <Label text="Paciente" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <ChoiceBox fx:id="choicePaciente" prefWidth="300" style="
+                                -fx-background-color: white;
+                                -fx-background-radius: 8;
+                                -fx-border-color: #D0D0D0;
+                                -fx-border-radius: 8;
+                                -fx-border-width: 1.5;
+                                -fx-padding: 5 10;
+                                -fx-font-size: 14;
+                                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);
+                            "/>
+                </VBox>
+
+                <!-- MÉDICO -->
+                <VBox spacing="5">
+                    <Label text="Médico" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <ChoiceBox fx:id="choiceMedico" prefWidth="300" style="
+                                -fx-background-color: white;
+                                -fx-background-radius: 8;
+                                -fx-border-color: #D0D0D0;
+                                -fx-border-radius: 8;
+                                -fx-border-width: 1.5;
+                                -fx-padding: 5 10;
+                                -fx-font-size: 14;
+                                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);
+                            "/>
+                </VBox>
+
+                <!-- OBSERVAÇÕES -->
+                <VBox spacing="5">
+                    <Label text="Observações" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <TextArea fx:id="inputObservacoes"
+                              prefRowCount="4"
+                              wrapText="true"
+                              style="-fx-background-radius: 10; -fx-border-radius: 10;"/>
+                </VBox>
+
+            </VBox>
+
+            <!-- BOTÕES -->
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <padding>
+                    <Insets top="10" bottom="20" left="20" right="20"/>
+                </padding>
+
+                <Button text="Voltar"
+                        onAction="#voltar"
+                        prefHeight="40"
+                        style="-fx-background-color: #B0B0B0; -fx-text-fill: white;
+                               -fx-font-size: 14; -fx-background-radius: 10;"/>
+
+                <Button text="Cadastrar"
+                        onAction="#cadastrarConsulta"
+                        prefHeight="40"
+                        style="-fx-background-color: #1976FF; -fx-text-fill: white;
+                               -fx-font-size: 14; -fx-background-radius: 10;"/>
+            </HBox>
+        </VBox>
+    </children>
+</StackPane>

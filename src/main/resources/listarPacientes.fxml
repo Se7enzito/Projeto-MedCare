@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="855" prefWidth="520"
+           xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.projeto.API.fxml.listar.ListarPacienteController"
+           style="-fx-background-color: #F2F3F5;">
+
+    <children>
+        <VBox alignment="TOP_CENTER" maxWidth="520"
+              style="-fx-background-color: white; -fx-background-radius: 20;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);">
+
+            <HBox alignment="CENTER_LEFT" prefHeight="80" spacing="12"
+                  style="-fx-background-color: #1976FF; -fx-background-radius: 20 20 0 0;">
+                <padding><Insets left="20" right="20"/></padding>
+
+                <Label text="👤" style="-fx-font-size: 26; -fx-text-fill: white;"/>
+                <Label text="Lista de Pacientes"
+                       style="-fx-font-size: 24; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- BUSCA -->
+            <VBox spacing="8">
+                <padding><Insets top="15" left="20" right="20"/></padding>
+
+                <TextField fx:id="inputBusca" promptText="Buscar por nome, CPF..." />
+
+            </VBox>
+
+            <TableView fx:id="tablePacientes" prefHeight="520">
+                <columns>
+                    <TableColumn fx:id="colNome" text="Nome" prefWidth="180"/>
+                    <TableColumn fx:id="colCpf" text="CPF" prefWidth="140"/>
+                    <TableColumn fx:id="colTelefone" text="Telefone" prefWidth="140"/>
+                </columns>
+            </TableView>
+
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <padding><Insets left="20" right="20" top="10" bottom="20"/></padding>
+
+                <Button text="Atualizar" onAction="#atualizar"
+                        style="-fx-background-color: #1976FF; -fx-text-fill: white; -fx-background-radius: 10;"
+                        prefHeight="40"/>
+
+                <Button text="Voltar" onAction="#voltar"
+                        style="-fx-background-color: #B0B0B0; -fx-text-fill: white; -fx-background-radius: 10;"
+                        prefHeight="40"/>
+            </HBox>
+
+        </VBox>
+    </children>
+
+</StackPane>

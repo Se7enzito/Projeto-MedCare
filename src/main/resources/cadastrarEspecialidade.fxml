@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="855" prefWidth="520" style="-fx-background-color: #F2F3F5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.projeto.API.fxml.cadastro.CadastroEspecialidadeController">
+   <children>
+      <VBox alignment="TOP_CENTER" maxWidth="520" spacing="0" style="-fx-background-color: white; -fx-background-radius: 20;                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="80" spacing="12" style="-fx-background-color: #1976FF; -fx-background-radius: 20 20 0 0;">
+               <children>
+                  <Label style="-fx-font-size: 26; -fx-text-fill: white;" text="🏥" />
+                  <Label style="-fx-font-size: 24; -fx-text-fill: white; -fx-font-weight: bold;" text="Cadastrar Especialidade" />
+               </children>
+               <padding>
+                  <Insets bottom="0" left="20" right="20" top="0" />
+               </padding>
+            </HBox>
+            <VBox spacing="18">
+               <children>
+                  <VBox spacing="5">
+                     <children>
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Nome da Especialidade" />
+                        <TextField fx:id="inputNome" promptText="Digite o nome completo" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="5">
+                     <children>
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Descriçao" />
+                        <TextArea prefHeight="200.0" prefWidth="200.0" fx:id="inputDescricao" promptText="Digite a descrição da especialidade" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="30" left="30" right="30" top="30" />
+               </padding>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+               <children>
+                  <Button onAction="#voltar" prefHeight="40" style="-fx-background-color: #B0B0B0; -fx-text-fill: white;                            -fx-font-size: 14; -fx-background-radius: 10;" text="Voltar" />
+                  <Button onAction="#cadastrarEspecialidade" prefHeight="40" style="-fx-background-color: #1976FF; -fx-text-fill: white;                            -fx-font-size: 14; -fx-background-radius: 10;" text="Cadastrar" />
+               </children>
+               <padding>
+                  <Insets bottom="20" left="20" right="20" top="10" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

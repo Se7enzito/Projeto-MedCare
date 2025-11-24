@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="855" prefWidth="520"
+           xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.projeto.API.fxml.atualizar.select.SelecionarConsultaAtualizarController"
+           style="-fx-background-color: #F2F3F5;">
+
+    <children>
+        <VBox alignment="TOP_CENTER" maxWidth="520"
+              style="-fx-background-color: white; -fx-background-radius: 20;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);">
+
+            <!-- TÍTULO -->
+            <HBox alignment="CENTER_LEFT" prefHeight="80" spacing="12"
+                  style="-fx-background-color: #1976FF; -fx-background-radius: 20 20 0 0;">
+                <padding><Insets left="20" right="20"/></padding>
+
+                <Label text="✏" style="-fx-font-size: 26; -fx-text-fill: white;"/>
+                <Label text="Selecionar Consulta"
+                       style="-fx-font-size: 24; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- LISTA -->
+            <VBox spacing="10">
+                <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+
+                <TableView fx:id="tableConsultas" prefHeight="600">
+
+                    <columns>
+                        <TableColumn fx:id="colData" text="Data" prefWidth="80"/>
+                        <TableColumn fx:id="colHora" text="Hora" prefWidth="80"/>
+                        <TableColumn fx:id="colPaciente" text="Paciente" prefWidth="150"/>
+                        <TableColumn fx:id="colMedico" text="Médico" prefWidth="150"/>
+                    </columns>
+
+                </TableView>
+            </VBox>
+
+            <!-- BOTÕES -->
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <padding><Insets left="20" right="20" bottom="20" top="10"/></padding>
+
+                <Button text="Voltar" onAction="#voltar"
+                        style="-fx-background-color: #B0B0B0; -fx-text-fill: white;
+                               -fx-font-size: 14; -fx-background-radius: 10;"
+                        prefHeight="40"/>
+
+                <Button text="Selecionar" onAction="#selecionar"
+                        style="-fx-background-color: #1976FF; -fx-text-fill: white;
+                               -fx-font-size: 14; -fx-background-radius: 10;"
+                        prefHeight="40"/>
+            </HBox>
+
+        </VBox>
+    </children>
+
+</StackPane>

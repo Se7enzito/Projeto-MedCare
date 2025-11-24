@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="855" prefWidth="520"
+           xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.projeto.API.fxml.atualizar.AtualizarEspecialidadeController"
+           style="-fx-background-color: #F2F3F5;">
+
+    <children>
+        <VBox alignment="TOP_CENTER" maxWidth="520"
+              style="-fx-background-color: white; -fx-background-radius: 20;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);">
+
+            <!-- CABEÇALHO -->
+            <HBox alignment="CENTER_LEFT" prefHeight="80" spacing="12"
+                  style="-fx-background-color: #7B1FA2; -fx-background-radius: 20 20 0 0;">
+                <padding><Insets left="20" right="20"/></padding>
+
+                <Label text="⭐" style="-fx-font-size: 26; -fx-text-fill: white;"/>
+                <Label text="Atualizar Especialidade"
+                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            </HBox>
+
+            <!-- FORM -->
+            <VBox spacing="18">
+                <padding><Insets top="30" left="30" right="30" bottom="30"/></padding>
+
+                <VBox spacing="5">
+                    <Label text="Selecione a Especialidade" style="-fx-font-weight: bold;"/>
+                    <ChoiceBox fx:id="choiceEspecialidade" prefWidth="300"/>
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label text="Nome da Especialidade" style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="inputNome" promptText="Ex: Cardiologia"/>
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label text="Descrição" style="-fx-font-weight: bold;"/>
+                    <TextArea fx:id="inputDescricao" prefHeight="120" promptText="Descrição detalhada"/>
+                </VBox>
+            </VBox>
+
+            <!-- BOTÕES -->
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <padding><Insets left="20" right="20" bottom="20" top="10"/></padding>
+
+                <Button text="Voltar"
+                        onAction="#voltar"
+                        style="-fx-background-radius: 10; -fx-font-size: 14;
+                               -fx-background-color: #B0B0B0; -fx-text-fill: white;"
+                        prefHeight="40"/>
+
+                <Button text="Salvar Alterações"
+                        onAction="#atualizarEspecialidade"
+                        style="-fx-background-radius: 10; -fx-font-size: 14;
+                               -fx-background-color: #7B1FA2; -fx-text-fill: white;"
+                        prefHeight="40"/>
+            </HBox>
+
+        </VBox>
+    </children>
+
+</StackPane>

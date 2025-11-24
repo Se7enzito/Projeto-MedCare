@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="855" prefWidth="520"
+           xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.projeto.API.fxml.atualizar.AtualizarPacienteController"
+           style="-fx-background-color: #F2F3F5;">
+
+    <children>
+        <VBox alignment="TOP_CENTER" maxWidth="520"
+              style="-fx-background-color: white; -fx-background-radius: 20;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 4);">
+
+            <!-- CABEÇALHO -->
+            <HBox alignment="CENTER_LEFT" prefHeight="80" spacing="12"
+                  style="-fx-background-color: #1976FF; -fx-background-radius: 20 20 0 0;">
+                <padding><Insets left="20" right="20"/></padding>
+
+                <Label text="📝" style="-fx-font-size: 26; -fx-text-fill: white;"/>
+                <Label text="Atualizar Paciente"
+                       style="-fx-font-size: 24; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- FORMULÁRIO -->
+            <VBox spacing="15">
+                <padding><Insets top="25" left="30" right="30" bottom="25"/></padding>
+
+                <!-- Seleção do Paciente -->
+                <VBox spacing="5">
+                    <Label text="Selecione o Paciente"
+                           style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <ChoiceBox fx:id="choicePaciente" prefWidth="200"/>
+                </VBox>
+
+                <!-- Nome -->
+                <VBox spacing="5">
+                    <Label text="Nome Completo" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <TextField fx:id="inputNome" promptText="Digite o nome"/>
+                </VBox>
+
+                <!-- CPF -->
+                <VBox spacing="5">
+                    <Label text="CPF" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <TextField fx:id="inputCpf" promptText="000.000.000-00"/>
+                </VBox>
+
+                <!-- Data Nascimento -->
+                <VBox spacing="5">
+                    <Label text="Data de Nascimento" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <TextField fx:id="inputNascimento" promptText="DD/MM/AAAA"/>
+                </VBox>
+
+                <!-- Telefone -->
+                <VBox spacing="5">
+                    <Label text="Telefone" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <TextField fx:id="inputTelefone" promptText="(00) 00000-0000"/>
+                </VBox>
+
+                <!-- Email -->
+                <VBox spacing="5">
+                    <Label text="Email" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <TextField fx:id="inputEmail" promptText="email@exemplo.com"/>
+                </VBox>
+
+                <!-- Endereço -->
+                <VBox spacing="5">
+                    <Label text="Endereço" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <TextField fx:id="inputEndereco" promptText="Digite o endereço"/>
+                </VBox>
+
+            </VBox>
+
+            <!-- BOTÕES -->
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <padding><Insets top="10" bottom="20" left="20" right="20"/></padding>
+
+                <Button text="Voltar" onAction="#voltar"
+                        style="-fx-background-color: #B0B0B0; -fx-text-fill: white;
+                               -fx-font-size: 14; -fx-background-radius: 10;" prefHeight="40"/>
+
+                <Button text="Atualizar" onAction="#atualizarPaciente"
+                        style="-fx-background-color: #1976FF; -fx-text-fill: white;
+                               -fx-font-size: 14; -fx-background-radius: 10;" prefHeight="40"/>
+            </HBox>
+
+        </VBox>
+    </children>
+
+</StackPane>
