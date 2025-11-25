@@ -3,6 +3,7 @@ package org.projeto.API.fxml.cadastro;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.projeto.API.FXMLManager;
+import org.projeto.API.utils.TelefoneUtils;
 import org.projeto.database.dao.EspecialidadeDAO;
 import org.projeto.database.dao.MedicoDAO;
 import org.projeto.database.model.Especialidade;
@@ -19,7 +20,7 @@ public class CadastroMedicoController {
     private TextField inputNome;
 
     @FXML
-    private TextField inputCpf;
+    private TextField inputCrm;
 
     @FXML
     private TextField inputTelefone;
@@ -49,26 +50,31 @@ public class CadastroMedicoController {
     private void cadastrarMedico() throws SQLException {
         if (!validar()) return;
 
+        String nome = inputNome.getText();
+        String crm = inputCrm.getText();
+        String telefone = TelefoneUtils.removeSymbolsPhone(inputTelefone.getText());
+        String email = inputEmail.getText();
+
         System.out.println("=== CADASTRANDO MÉDICO ===");
-        System.out.println("Nome: " + inputNome.getText());
-        System.out.println("CPF: " + inputCpf.getText());
-        System.out.println("Telefone: " + inputTelefone.getText());
-        System.out.println("Email: " + inputEmail.getText());
+        System.out.println("Nome: " + nome);
+        System.out.println("CRM: " + crm);
+        System.out.println("Telefone: " + telefone);
+        System.out.println("Email: " + email);
 
         Especialidade especialidade = choiceEspecialidade.getValue();
 
         System.out.println("Especialidade Id: " + especialidade.getId());
         System.out.println("Especialidade Nome: " + especialidade.getNome());
 
-        int cpfInt;
+        int crmInt;
         try {
-            cpfInt = Integer.parseInt(inputCpf.getText());
+            crmInt = Integer.parseInt(crm);
         } catch (NumberFormatException e) {
-            alerta("Error!", "O CPF deve ser composto apenas por números!");
+            alerta("Error!", "O CRM deve ser composto apenas por números!");
             throw new RuntimeException(e);
         }
 
-        Medico medico = new Medico(inputNome.getText(), cpfInt, inputTelefone.getText(), inputEmail.getText(), especialidade.getId());
+        Medico medico = new Medico(nome, crmInt, telefone, email, especialidade.getId());
         
         dao.insert(medico);
 
@@ -84,7 +90,7 @@ public class CadastroMedicoController {
 
     private boolean validar() {
         if (inputNome.getText().isEmpty() ||
-                inputCpf.getText().isEmpty() ||
+                inputCrm.getText().isEmpty() ||
                 inputTelefone.getText().isEmpty() ||
                 inputEmail.getText().isEmpty() ||
                 choiceEspecialidade.getValue() == null) {
@@ -92,12 +98,21 @@ public class CadastroMedicoController {
             alerta("Campos obrigatórios", "Preencha todos os campos.");
             return false;
         }
+
+        String telefoneLimpo = TelefoneUtils.removeSymbolsPhone(inputTelefone.getText());
+
+        if (!TelefoneUtils.isValid(telefoneLimpo, "mobile") || !TelefoneUtils.isValid(telefoneLimpo, "landline")) {
+            alerta("Telefone inválido", "O telefone informado é inválido. Verifique e tente novamente.");
+
+            return false;
+        }
+
         return true;
     }
 
     private void limpar() {
         inputNome.clear();
-        inputCpf.clear();
+        inputCrm.clear();
         inputTelefone.clear();
         inputEmail.clear();
         choiceEspecialidade.getSelectionModel().selectFirst();

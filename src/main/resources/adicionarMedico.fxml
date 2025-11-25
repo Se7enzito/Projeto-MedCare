@@ -38,10 +38,10 @@
                     <TextField fx:id="inputNome" promptText="Digite o nome completo"/>
                 </VBox>
 
-                <!-- CPF -->
+                <!-- CRM -->
                 <VBox spacing="5">
-                    <Label text="CPF" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
-                    <TextField fx:id="inputCpf" promptText="000.000.000-00"/>
+                    <Label text="CRM" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <TextField fx:id="inputCrm" promptText="000000"/>
                 </VBox>
 
                 <!-- Telefone -->

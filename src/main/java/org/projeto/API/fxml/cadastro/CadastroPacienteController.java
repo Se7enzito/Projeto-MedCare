@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import org.projeto.API.FXMLManager;
+import org.projeto.API.utils.CpfUtils;
+import org.projeto.API.utils.TelefoneUtils;
 import org.projeto.database.dao.PacienteDAO;
 import org.projeto.database.model.Paciente;
 
@@ -39,17 +41,17 @@ public class CadastroPacienteController {
         }
 
         String nome = inputNome.getText();
-        String cpf = inputCpf.getText();
+        String cpf = CpfUtils.removeSymbols(inputCpf.getText());
         String nascimento = inputNascimento.getText();
-        String telefone = inputTelefone.getText();
+        String telefone = TelefoneUtils.removeSymbolsPhone(inputTelefone.getText());
         String email = inputEmail.getText();
         String endereco = inputEndereco.getText();
 
         System.out.println("---- Cadastro de Paciente ----");
         System.out.println("Nome: " + nome);
-        System.out.println("CPF: " + cpf);
+        System.out.println("CPF: " + CpfUtils.formatCpf(cpf));
         System.out.println("Nascimento: " + nascimento);
-        System.out.println("Telefone: " + telefone);
+        System.out.println("Telefone: " + TelefoneUtils.formatPhone(telefone));
         System.out.println("Email: " + email);
         System.out.println("Endereço: " + endereco);
 
@@ -69,6 +71,22 @@ public class CadastroPacienteController {
                 inputEmail.getText().isEmpty() ||
                 inputEndereco.getText().isEmpty()) {
             mostrarMensagem("Campos incompletos", "Preencha todos os campos para continuar.");
+
+            return false;
+        }
+
+        String cpfLimpo = CpfUtils.removeSymbols(inputCpf.getText());
+
+        if (!CpfUtils.isValid(cpfLimpo)) {
+            mostrarMensagem("CPF inválido", "O CPF informado é inválido. Verifique e tente novamente.");
+
+            return false;   
+        }
+
+        String telefoneLimpo = TelefoneUtils.removeSymbolsPhone(inputTelefone.getText());
+
+        if (!TelefoneUtils.isValid(telefoneLimpo, "mobile") || !TelefoneUtils.isValid(telefoneLimpo, "landline")) {
+            mostrarMensagem("Telefone inválido", "O telefone informado é inválido. Verifique e tente novamente.");
 
             return false;
         }

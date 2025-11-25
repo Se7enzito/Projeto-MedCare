@@ -9,7 +9,7 @@ import org.projeto.database.DatabaseSetup;
 
 public class Main extends Application {
 
-    private static GerenciadorAPI gerenciadorAPI = new GerenciadorAPI();
+    private static final GerenciadorAPI gerenciadorAPI = new GerenciadorAPI();
 
     @Override
     public void start(Stage primaryStage) {
