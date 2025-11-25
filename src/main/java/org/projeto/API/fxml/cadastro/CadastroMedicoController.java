@@ -3,6 +3,7 @@ package org.projeto.API.fxml.cadastro;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.projeto.API.FXMLManager;
+import org.projeto.API.utils.EmailUtils;
 import org.projeto.API.utils.TelefoneUtils;
 import org.projeto.database.dao.EspecialidadeDAO;
 import org.projeto.database.dao.MedicoDAO;
@@ -104,6 +105,11 @@ public class CadastroMedicoController {
         if (!TelefoneUtils.isValid(telefoneLimpo, "mobile") && !TelefoneUtils.isValid(telefoneLimpo, "landline")) {
             alerta("Telefone inválido", "O telefone informado é inválido. Verifique e tente novamente.");
 
+            return false;
+        }
+
+        if (!EmailUtils.isValidEmail(inputEmail.getText())) {
+            mostrarMensagem("Email inválido", "O email informado é inválido. Verifique e tente novamente.");
             return false;
         }
 
