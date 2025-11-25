@@ -101,7 +101,7 @@ public class CadastroMedicoController {
 
         String telefoneLimpo = TelefoneUtils.removeSymbolsPhone(inputTelefone.getText());
 
-        if (!TelefoneUtils.isValid(telefoneLimpo, "mobile") || !TelefoneUtils.isValid(telefoneLimpo, "landline")) {
+        if (!TelefoneUtils.isValid(telefoneLimpo, "mobile") && !TelefoneUtils.isValid(telefoneLimpo, "landline")) {
             alerta("Telefone inválido", "O telefone informado é inválido. Verifique e tente novamente.");
 
             return false;

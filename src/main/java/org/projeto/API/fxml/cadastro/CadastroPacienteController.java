@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import org.projeto.API.FXMLManager;
 import org.projeto.API.utils.CpfUtils;
+import org.projeto.API.utils.EmailUtils;
 import org.projeto.API.utils.TelefoneUtils;
 import org.projeto.database.dao.PacienteDAO;
 import org.projeto.database.model.Paciente;
@@ -85,9 +86,14 @@ public class CadastroPacienteController {
 
         String telefoneLimpo = TelefoneUtils.removeSymbolsPhone(inputTelefone.getText());
 
-        if (!TelefoneUtils.isValid(telefoneLimpo, "mobile") || !TelefoneUtils.isValid(telefoneLimpo, "landline")) {
+        if (!TelefoneUtils.isValid(telefoneLimpo, "mobile") && !TelefoneUtils.isValid(telefoneLimpo, "landline")) {
             mostrarMensagem("Telefone inválido", "O telefone informado é inválido. Verifique e tente novamente.");
 
+            return false;
+        }
+
+        if (!EmailUtils.isValidEmail(inputEmail.getText())) {
+            mostrarMensagem("Email inválido", "O email informado é inválido. Verifique e tente novamente.");
             return false;
         }
 
