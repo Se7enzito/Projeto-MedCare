@@ -109,7 +109,7 @@ public class CadastroMedicoController {
         }
 
         if (!EmailUtils.isValidEmail(inputEmail.getText())) {
-            mostrarMensagem("Email inválido", "O email informado é inválido. Verifique e tente novamente.");
+            alerta("Email inválido", "O email informado é inválido. Verifique e tente novamente.");
             return false;
         }
 
