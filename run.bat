@@ -1,4 +1,5 @@
 @echo off
+setlocal enabledelayedexpansion
 TITLE MedCare (JavaFX)
 
 echo =====================================
@@ -8,13 +9,13 @@ echo =====================================
 REM Diretório onde o Maven armazena o JavaFX
 set "JFX_DIR=%USERPROFILE%\.m2\repository\org\openjfx"
 
-REM Captura todos os jars necessários
-for /f "delims=" %%i in ('dir /s /b "%JFX_DIR%\*.jar"') do (
+REM Limpa variável
+set "MODULE_PATH="
+
+REM Captura apenas JARs do JavaFX (ignora plugins)
+for /f "delims=" %%i in ('dir /s /b "%JFX_DIR%\javafx-*.jar"') do (
     set "MODULE_PATH=!MODULE_PATH!;%%i"
 )
-
-REM Habilita delayed expansion
-setlocal enabledelayedexpansion
 
 if "%MODULE_PATH%"=="" (
     echo Erro: Nenhum JAR do JavaFX encontrado no Maven!
@@ -42,7 +43,7 @@ echo.
 echo Executando aplicacao...
 echo.
 
-call mvn javafx:run -q -Dexec.args="%VM_OPTS%"
+call mvn javafx:run -q
 
 echo.
 echo =====================================
