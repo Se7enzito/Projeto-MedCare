@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.projeto.API.FXMLManager;
+import org.projeto.Main;
 import org.projeto.database.dao.EspecialidadeDAO;
 import org.projeto.database.model.Especialidade;
 
@@ -33,7 +34,7 @@ public class CadastroEspecialidadeController {
         System.out.println("Nome: " + nome);
         System.out.println("Descrição: " + descricao);
 
-        Especialidade especialidade = new Especialidade(nome, descricao);
+        Especialidade especialidade = new Especialidade(Main.getIdClinica(), nome, descricao);
 
         dao.insert(especialidade);
 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="500" prefWidth="460" style="-fx-background-color: #E9ECF1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.projeto.API.fxml.AdminController">
+
+    <children>
+
+        <VBox alignment="TOP_CENTER" maxWidth="460" spacing="0" style="-fx-background-color: white;                      -fx-background-radius: 22;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 30, 0, 0, 6);">
+   <children>
+   
+               <!-- CABEÇALHO -->
+               <HBox alignment="CENTER_LEFT" prefHeight="95" spacing="14" style="-fx-background-color: linear-gradient(to right, #1976FF, #4D9BFF);                          -fx-background-radius: 22 22 0 0;">
+                   <padding>
+                  <Insets left="25" right="25" />
+               </padding>
+      <children>
+      
+                      <Label style="-fx-font-size: 32; -fx-text-fill: white;" text="🛠️" />
+                      <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: white;" text="Administrador" />
+      </children>
+               </HBox>
+   
+               <!-- FORMULÁRIO -->
+               <VBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 35 35 45 35;">
+      <children>
+      
+                      <Label style="-fx-font-size: 20; -fx-font-weight: bold;" text="Criar nova clínica" />
+      
+                      <!-- EMAIL -->
+                      <VBox spacing="6">
+         <children>
+                             <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Email da Clínica" />
+                             <TextField fx:id="inputEmail" promptText="Digite o email da clínica" style="-fx-background-radius: 12;                                       -fx-padding: 10;                                       -fx-font-size: 15;" />
+         </children>
+                      </VBox>
+      
+                      <!-- SENHA -->
+                      <VBox spacing="6">
+         <children>
+                             <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Senha" />
+                             <PasswordField fx:id="inputSenha" promptText="Digite a senha" style="-fx-background-radius: 12;                                           -fx-padding: 10;                                           -fx-font-size: 15;" />
+         </children>
+                      </VBox>
+                  <Button onAction="#criarClinica" prefHeight="45" prefWidth="200" style="-fx-background-color: linear-gradient(to right, #1976FF, #4D9BFF);                                -fx-text-fill: white;                                -fx-background-radius: 12;                                -fx-font-size: 18;                                -fx-font-weight: bold;" text="Criar Clínica" />
+      
+                      <!-- BOTÃO CRIAR -->
+                      <Button onAction="#sair" prefHeight="45" prefWidth="200" style="-fx-background-color: linear-gradient(to right, #1976FF, #4D9BFF);                                -fx-text-fill: white;                                -fx-background-radius: 12;                                -fx-font-size: 18;                                -fx-font-weight: bold;" text="Sair" />
+      </children>
+               </VBox>
+   </children>
+
+        </VBox>
+
+    </children>
+
+</StackPane>

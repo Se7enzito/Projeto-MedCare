@@ -3,6 +3,7 @@ package org.projeto.API.fxml.remover;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.projeto.API.FXMLManager;
+import org.projeto.Main;
 import org.projeto.database.dao.MedicoDAO;
 import org.projeto.database.model.Medico;
 
@@ -29,7 +30,7 @@ public class RemoverMedicoController {
     @FXML
     private void atualizarTabela() {
         try {
-            tableMedicos.getItems().setAll(dao.getAll());
+            tableMedicos.getItems().setAll(dao.getAll(Main.getIdClinica()));
 
         } catch (SQLException e) {
             alerta("Erro", "Erro ao carregar médicos.");

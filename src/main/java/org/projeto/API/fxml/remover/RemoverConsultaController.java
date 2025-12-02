@@ -3,6 +3,7 @@ package org.projeto.API.fxml.remover;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.projeto.API.FXMLManager;
+import org.projeto.Main;
 import org.projeto.database.dao.ConsultaDAO;
 import org.projeto.database.model.Consulta;
 
@@ -20,7 +21,7 @@ public class RemoverConsultaController {
     @FXML
     public void atualizar() {
         try {
-            listaConsultas.getItems().setAll(consultaDAO.getAll());
+            listaConsultas.getItems().setAll(consultaDAO.getAll(Main.getIdClinica()));
         } catch (Exception e) {
             alerta("Erro", "Erro ao carregar consultas!");
         }

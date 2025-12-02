@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.beans.property.SimpleStringProperty;
 import org.projeto.API.FXMLManager;
 import org.projeto.API.fxml.atualizar.AtualizarConsultaController;
+import org.projeto.Main;
 import org.projeto.database.dao.*;
 import org.projeto.database.model.*;
 
@@ -48,7 +49,7 @@ public class SelecionarConsultaAtualizarController {
 
     private void atualizarLista() {
         try {
-            tableConsultas.setItems(FXCollections.observableArrayList(consultaDAO.getAll()));
+            tableConsultas.setItems(FXCollections.observableArrayList(consultaDAO.getAll(Main.getIdClinica())));
         } catch (Exception e) {
             alerta("Erro", "Erro ao carregar consultas.");
         }

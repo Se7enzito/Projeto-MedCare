@@ -4,6 +4,7 @@ import javafx.collections.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.projeto.API.FXMLManager;
+import org.projeto.Main;
 import org.projeto.database.dao.PacienteDAO;
 import org.projeto.database.model.Paciente;
 import javafx.beans.property.SimpleStringProperty;
@@ -32,7 +33,7 @@ public class ListarPacienteController {
 
     public void atualizar() {
         try {
-            tablePacientes.setItems(FXCollections.observableArrayList(pacienteDAO.getAll()));
+            tablePacientes.setItems(FXCollections.observableArrayList(pacienteDAO.getAll(Main.getIdClinica())));
         } catch (Exception e) {
             alerta("Erro", "Não foi possível carregar os pacientes.");
         }

@@ -10,12 +10,13 @@ import java.util.List;
 public class EspecialidadeDAO {
 
     public void insert(Especialidade e) throws SQLException {
-        String sql = "INSERT INTO especialidade (nome, descricao) VALUES (?, ?)";
+        String sql = "INSERT INTO especialidade (nome, descricao, idClinica) VALUES (?, ?, ?)";
         Connection conn = DatabaseConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql);
 
         stmt.setString(1, e.getNome());
         stmt.setString(2, e.getDescricao());
+        stmt.setInt(3, e.getIdClinica());
         stmt.executeUpdate();
     }
 
@@ -30,6 +31,7 @@ public class EspecialidadeDAO {
         if (rs.next()) {
             Especialidade e = new Especialidade();
             e.setId(rs.getInt("id"));
+            e.setIdClinica(rs.getInt("idClinica"));
             e.setNome(rs.getString("nome"));
             e.setDescricao(rs.getString("descricao"));
             return e;
@@ -49,6 +51,28 @@ public class EspecialidadeDAO {
         while (rs.next()) {
             Especialidade e = new Especialidade();
             e.setId(rs.getInt("id"));
+            e.setIdClinica(rs.getInt("idClinica"));
+            e.setNome(rs.getString("nome"));
+            e.setDescricao(rs.getString("descricao"));
+            lista.add(e);
+        }
+
+        return lista;
+    }
+
+    public List<Especialidade> getAll(int idClinica) throws SQLException {
+        String sql = "SELECT * FROM especialidade WHERE idClinica = ?";
+        Connection conn = DatabaseConnection.getConnection();
+
+        List<Especialidade> lista = new ArrayList<>();
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, idClinica);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Especialidade e = new Especialidade();
+            e.setId(rs.getInt("id"));
+            e.setIdClinica(rs.getInt("idClinica"));
             e.setNome(rs.getString("nome"));
             e.setDescricao(rs.getString("descricao"));
             lista.add(e);

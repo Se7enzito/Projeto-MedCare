@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class Consulta {
     private int id;
+    private int idClinica;
     private String data;
     private String hora;
     private String status;
@@ -16,7 +17,8 @@ public class Consulta {
 
     public Consulta() {}
 
-    public Consulta(String data, String hora, String status, String observacoes, int pacienteId, int medicoId) {
+    public Consulta(int idClinica, String data, String hora, String status, String observacoes, int pacienteId, int medicoId) {
+        this.idClinica = idClinica;
         this.data = data;
         this.hora = hora;
         this.status = status;
@@ -91,6 +93,14 @@ public class Consulta {
         MedicoDAO medicoDAO = new MedicoDAO();
 
         return medicoDAO.getById(medicoId).getNome();
+    }
+
+    public int getIdClinica() {
+        return idClinica;
+    }
+
+    public void setIdClinica(int idClinica) {
+        this.idClinica = idClinica;
     }
 
     @Override

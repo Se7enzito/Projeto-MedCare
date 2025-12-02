@@ -2,6 +2,7 @@ package org.projeto.API.fxml;
 
 import javafx.fxml.FXML;
 import org.projeto.API.FXMLManager;
+import org.projeto.Main;
 
 public class InicialController {
 
@@ -119,7 +120,10 @@ public class InicialController {
 
     @FXML
     private void sair() {
-        System.out.println("Fechando programa...");
+        System.out.println("Saindo da clínica...");
+
+        Main.setIdClinica(0);
+
         System.exit(0);
     }
 }

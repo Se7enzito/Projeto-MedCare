@@ -3,6 +3,7 @@ package org.projeto.API.fxml.cadastro;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.projeto.API.FXMLManager;
+import org.projeto.Main;
 import org.projeto.database.dao.ConsultaDAO;
 import org.projeto.database.dao.MedicoDAO;
 import org.projeto.database.dao.PacienteDAO;
@@ -58,6 +59,7 @@ public class CadastroConsultaController {
         Medico m = choiceMedico.getValue();
 
         Consulta consulta = new Consulta(
+                Main.getIdClinica(),
                 inputData.getText(),
                 inputHora.getText(),
                 choiceStatus.getValue(),

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.beans.property.SimpleStringProperty;
 import org.projeto.API.FXMLManager;
+import org.projeto.Main;
 import org.projeto.database.dao.PacienteDAO;
 import org.projeto.database.model.Paciente;
 
@@ -24,7 +25,7 @@ public class SelecionarPacienteAtualizarController {
         colCpf.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCpf()));
 
         try {
-            tablePacientes.setItems(FXCollections.observableArrayList(pacienteDAO.getAll()));
+            tablePacientes.setItems(FXCollections.observableArrayList(pacienteDAO.getAll(Main.getIdClinica())));
         } catch (Exception ignored) {}
     }
 

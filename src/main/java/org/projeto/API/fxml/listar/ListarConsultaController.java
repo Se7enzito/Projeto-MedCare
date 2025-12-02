@@ -9,6 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import org.projeto.API.FXMLManager;
+import org.projeto.Main;
 import org.projeto.database.dao.ConsultaDAO;
 import org.projeto.database.dao.MedicoDAO;
 import org.projeto.database.dao.PacienteDAO;
@@ -102,7 +103,7 @@ public class ListarConsultaController {
     @FXML
     public void atualizar() {
         try {
-            cacheConsultas = FXCollections.observableArrayList(consultaDAO.getAll());
+            cacheConsultas = FXCollections.observableArrayList(consultaDAO.getAll(Main.getIdClinica()));
             tableConsultas.setItems(cacheConsultas);
             filtrar();
         } catch (SQLException e) {

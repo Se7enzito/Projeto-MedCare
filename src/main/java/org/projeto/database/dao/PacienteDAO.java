@@ -10,17 +10,18 @@ import java.util.List;
 public class PacienteDAO {
 
     public void insert(Paciente p) throws SQLException {
-        String sql = "INSERT INTO pacientes (nome, cpf, dataNascimento, telefone, email, endereco) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pacientes (idClinica, nome, cpf, dataNascimento, telefone, email, endereco) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         Connection conn = DatabaseConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql);
 
-        stmt.setString(1, p.getNome());
-        stmt.setString(2, p.getCpf());
-        stmt.setString(3, p.getDataNascimento());
-        stmt.setString(4, p.getTelefone());
-        stmt.setString(5, p.getEmail());
-        stmt.setString(6, p.getEndereco());
+        stmt.setInt(1, p.getidClinica());
+        stmt.setString(2, p.getNome());
+        stmt.setString(3, p.getCpf());
+        stmt.setString(4, p.getDataNascimento());
+        stmt.setString(5, p.getTelefone());
+        stmt.setString(6, p.getEmail());
+        stmt.setString(7, p.getEndereco());
 
         stmt.executeUpdate();
     }
@@ -36,6 +37,7 @@ public class PacienteDAO {
         if (rs.next()) {
             Paciente p = new Paciente();
             p.setId(rs.getInt("id"));
+            p.setidClinica(rs.getInt("idClinica"));
             p.setNome(rs.getString("nome"));
             p.setCpf(rs.getString("cpf"));
             p.setDataNascimento(rs.getString("dataNascimento"));
@@ -60,6 +62,34 @@ public class PacienteDAO {
         while (rs.next()) {
             Paciente p = new Paciente();
             p.setId(rs.getInt("id"));
+            p.setidClinica(rs.getInt("idClinica"));
+            p.setNome(rs.getString("nome"));
+            p.setCpf(rs.getString("cpf"));
+            p.setDataNascimento(rs.getString("dataNascimento"));
+            p.setTelefone(rs.getString("telefone"));
+            p.setEmail(rs.getString("email"));
+            p.setEndereco(rs.getString("endereco"));
+
+            lista.add(p);
+        }
+
+        return lista;
+    }
+
+    public List<Paciente> getAll(int idClinica) throws SQLException {
+        String sql = "SELECT * FROM pacientes WHERE idClinica = ?";
+        Connection conn = DatabaseConnection.getConnection();
+
+        List<Paciente> lista = new ArrayList<>();
+
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, idClinica);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Paciente p = new Paciente();
+            p.setId(rs.getInt("id"));
+            p.setidClinica(rs.getInt("idClinica"));
             p.setNome(rs.getString("nome"));
             p.setCpf(rs.getString("cpf"));
             p.setDataNascimento(rs.getString("dataNascimento"));

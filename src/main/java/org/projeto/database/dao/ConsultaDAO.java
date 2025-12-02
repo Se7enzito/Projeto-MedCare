@@ -11,8 +11,8 @@ public class ConsultaDAO {
 
     public void insert(Consulta c) throws SQLException {
         String sql = """
-                INSERT INTO consulta (data, hora, status, observacoes, pacienteId, medicoId)
-                VALUES (?, ?, ?, ?, ?, ?)
+                INSERT INTO consulta (data, hora, status, observacoes, pacienteId, medicoId, idClinica)
+                VALUES (?, ?, ?, ?, ?, ?, ?);
                 """;
 
         Connection conn = DatabaseConnection.getConnection();
@@ -24,6 +24,7 @@ public class ConsultaDAO {
         stmt.setString(4, c.getObservacoes());
         stmt.setInt(5, c.getPacienteId());
         stmt.setInt(6, c.getMedicoId());
+        stmt.setInt(7, c.getIdClinica());
 
         stmt.executeUpdate();
     }
@@ -39,6 +40,7 @@ public class ConsultaDAO {
         if (rs.next()) {
             Consulta c = new Consulta();
             c.setId(rs.getInt("id"));
+            c.setIdClinica(rs.getInt("idClinica"));
             c.setData(rs.getString("data"));
             c.setHora(rs.getString("hora"));
             c.setStatus(rs.getString("status"));
@@ -62,6 +64,33 @@ public class ConsultaDAO {
         while (rs.next()) {
             Consulta c = new Consulta();
             c.setId(rs.getInt("id"));
+            c.setIdClinica(rs.getInt("idClinica"));
+            c.setData(rs.getString("data"));
+            c.setHora(rs.getString("hora"));
+            c.setStatus(rs.getString("status"));
+            c.setObservacoes(rs.getString("observacoes"));
+            c.setPacienteId(rs.getInt("pacienteId"));
+            c.setMedicoId(rs.getInt("medicoId"));
+
+            lista.add(c);
+        }
+
+        return lista;
+    }
+
+    public List<Consulta> getAll(int idClinica) throws SQLException {
+        String sql = "SELECT * FROM consulta WHERE idClinica = ?";
+        Connection conn = DatabaseConnection.getConnection();
+
+        List<Consulta> lista = new ArrayList<>();
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, idClinica);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Consulta c = new Consulta();
+            c.setId(rs.getInt("id"));
+            c.setIdClinica(rs.getInt("idClinica"));
             c.setData(rs.getString("data"));
             c.setHora(rs.getString("hora"));
             c.setStatus(rs.getString("status"));

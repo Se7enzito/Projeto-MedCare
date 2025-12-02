@@ -2,6 +2,7 @@ package org.projeto.database.model;
 
 public class Medico {
     private int id;
+    private int idClinica;
     private String nome;
     private int crm;
     private String telefone;
@@ -10,7 +11,8 @@ public class Medico {
 
     public Medico() {}
 
-    public Medico(String nome, int crm, String telefone, String email, int especialidadeId) {
+    public Medico(int idClinica, String nome, int crm, String telefone, String email, int especialidadeId) {
+        this.idClinica = idClinica;
         this.nome = nome;
         this.crm = crm;
         this.telefone = telefone;
@@ -20,6 +22,10 @@ public class Medico {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setIdClinica(int idClinica) {
+        this.idClinica = idClinica;
     }
 
     public void setNome(String nome) {
@@ -44,6 +50,10 @@ public class Medico {
 
     public int getId() {
         return id;
+    }
+
+    public int getIdClinica() {
+        return idClinica;
     }
 
     public int getCrm() {

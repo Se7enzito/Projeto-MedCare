@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.beans.property.SimpleStringProperty;
 
 import org.projeto.API.FXMLManager;
+import org.projeto.Main;
 import org.projeto.database.dao.EspecialidadeDAO;
 import org.projeto.database.model.Especialidade;
 
@@ -29,7 +30,7 @@ public class RemoverEspecialidadeController {
     @FXML
     private void atualizarTabela() {
         try {
-            tableEspecialidades.getItems().setAll(dao.getAll());
+            tableEspecialidades.getItems().setAll(dao.getAll(Main.getIdClinica()));
 
         } catch (SQLException e) {
             alerta("Erro", "Erro ao carregar especialidades.");

@@ -10,13 +10,14 @@ import org.projeto.database.DatabaseSetup;
 public class Main extends Application {
 
     private static final GerenciadorAPI gerenciadorAPI = new GerenciadorAPI();
+    private static int idClinica = 0;
 
     @Override
     public void start(Stage primaryStage) {
         try {
             FXMLManager.setPrimaryStage(primaryStage);
 
-            gerenciadorAPI.runApp(false);
+            gerenciadorAPI.runApp();
         } catch (Exception e) {
             System.out.println("Erro ao iniciar interface gráfica:");
             e.printStackTrace();
@@ -42,4 +43,17 @@ public class Main extends Application {
 
         System.out.println("MedCare finalizado!");
     }
+
+    public static GerenciadorAPI getGerenciadorAPI() {
+        return gerenciadorAPI;
+    }
+
+    public static int getIdClinica() {
+        return idClinica;
+    }
+
+    public static void setIdClinica(int id) {
+        idClinica = id;
+    }
+
 }

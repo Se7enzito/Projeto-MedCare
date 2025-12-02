@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.beans.property.SimpleStringProperty;
 
 import org.projeto.API.FXMLManager;
+import org.projeto.Main;
 import org.projeto.database.dao.EspecialidadeDAO;
 import org.projeto.database.model.Especialidade;
 
@@ -25,7 +26,7 @@ public class SelecionarEspecialidadeAtualizarController {
         colDescricao.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getDescricao()));
 
         try {
-            tableEspecialidades.setItems(FXCollections.observableArrayList(dao.getAll()));
+            tableEspecialidades.setItems(FXCollections.observableArrayList(dao.getAll(Main.getIdClinica())));
         } catch (Exception ignored) {}
     }
 

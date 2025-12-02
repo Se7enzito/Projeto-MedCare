@@ -10,7 +10,7 @@ import java.util.List;
 public class MedicoDAO {
 
     public void insert(Medico m) throws SQLException {
-        String sql = "INSERT INTO medico (nome, crm, telefone, email, especialidadeId) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO medico (nome, crm, telefone, email, especialidadeId, idClinica) VALUES (?, ?, ?, ?, ?, ?)";
 
         Connection conn = DatabaseConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -20,6 +20,7 @@ public class MedicoDAO {
         stmt.setString(3, m.getTelefone());
         stmt.setString(4, m.getEmail());
         stmt.setInt(5, m.getEspecialidadeId());
+        stmt.setInt(6, m.getIdClinica());
 
         stmt.executeUpdate();
     }
@@ -35,6 +36,7 @@ public class MedicoDAO {
         if (rs.next()) {
             Medico m = new Medico();
             m.setId(rs.getInt("id"));
+            m.setIdClinica(rs.getInt("idClinica"));
             m.setNome(rs.getString("nome"));
             m.setCrm(rs.getInt("crm"));
             m.setTelefone(rs.getString("telefone"));
@@ -56,6 +58,31 @@ public class MedicoDAO {
         while (rs.next()) {
             Medico m = new Medico();
             m.setId(rs.getInt("id"));
+            m.setIdClinica(rs.getInt("idClinica"));
+            m.setNome(rs.getString("nome"));
+            m.setCrm(rs.getInt("crm"));
+            m.setTelefone(rs.getString("telefone"));
+            m.setEmail(rs.getString("email"));
+            m.setEspecialidadeId(rs.getInt("especialidadeId"));
+            lista.add(m);
+        }
+
+        return lista;
+    }
+
+    public List<Medico> getAll(int idClinica) throws SQLException {
+        String sql = "SELECT * FROM medico WHERE idClinica = ?";
+        Connection conn = DatabaseConnection.getConnection();
+
+        List<Medico> lista = new ArrayList<>();
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, idClinica);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Medico m = new Medico();
+            m.setId(rs.getInt("id"));
+            m.setIdClinica(rs.getInt("idClinica"));
             m.setNome(rs.getString("nome"));
             m.setCrm(rs.getInt("crm"));
             m.setTelefone(rs.getString("telefone"));

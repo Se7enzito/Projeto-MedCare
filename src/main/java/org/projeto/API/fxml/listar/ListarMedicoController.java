@@ -4,6 +4,8 @@ import javafx.collections.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.projeto.API.FXMLManager;
+import org.projeto.API.utils.TelefoneUtils;
+import org.projeto.Main;
 import org.projeto.database.dao.MedicoDAO;
 import org.projeto.database.model.Medico;
 import javafx.beans.property.SimpleStringProperty;
@@ -23,7 +25,7 @@ public class ListarMedicoController {
     public void initialize() {
         colNome.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getNome()));
         colCrm.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getCrm())));
-        colTelefone.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTelefone()));
+        colTelefone.setCellValueFactory(c -> new SimpleStringProperty(TelefoneUtils.formatPhone(c.getValue().getTelefone())));
 
         atualizar();
 
@@ -32,7 +34,7 @@ public class ListarMedicoController {
 
     public void atualizar() {
         try {
-            tableMedicos.setItems(FXCollections.observableArrayList(medicoDAO.getAll()));
+            tableMedicos.setItems(FXCollections.observableArrayList(medicoDAO.getAll(Main.getIdClinica())));
         } catch (Exception e) {
             alerta("Erro", "Não foi possível carregar os médicos.");
         }

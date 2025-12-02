@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.beans.property.SimpleStringProperty;
 import org.projeto.API.FXMLManager;
+import org.projeto.Main;
 import org.projeto.database.dao.EspecialidadeDAO;
 import org.projeto.database.model.Especialidade;
 
@@ -30,7 +31,7 @@ public class ListarEspecialidadeController {
 
     public void atualizar() {
         try {
-            tableEspecialidades.setItems(FXCollections.observableArrayList(dao.getAll()));
+            tableEspecialidades.setItems(FXCollections.observableArrayList(dao.getAll(Main.getIdClinica())));
         } catch (Exception e) {
             alerta("Erro", "Não foi possível carregar as especialidades.");
         }

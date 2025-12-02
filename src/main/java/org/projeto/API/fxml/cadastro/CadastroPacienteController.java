@@ -7,6 +7,7 @@ import org.projeto.API.FXMLManager;
 import org.projeto.API.utils.CpfUtils;
 import org.projeto.API.utils.EmailUtils;
 import org.projeto.API.utils.TelefoneUtils;
+import org.projeto.Main;
 import org.projeto.database.dao.PacienteDAO;
 import org.projeto.database.model.Paciente;
 
@@ -56,7 +57,7 @@ public class CadastroPacienteController {
         System.out.println("Email: " + email);
         System.out.println("Endereço: " + endereco);
 
-        Paciente paciente = new Paciente(nome, cpf, nascimento, telefone, email, endereco);
+        Paciente paciente = new Paciente(Main.getIdClinica(), nome, cpf, nascimento, telefone, email, endereco);
 
         dao.insert(paciente);
 

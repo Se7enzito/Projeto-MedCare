@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import org.projeto.API.FXMLManager;
 import org.projeto.API.utils.EmailUtils;
 import org.projeto.API.utils.TelefoneUtils;
+import org.projeto.Main;
 import org.projeto.database.dao.EspecialidadeDAO;
 import org.projeto.database.dao.MedicoDAO;
 import org.projeto.database.model.Especialidade;
@@ -75,7 +76,7 @@ public class CadastroMedicoController {
             throw new RuntimeException(e);
         }
 
-        Medico medico = new Medico(nome, crmInt, telefone, email, especialidade.getId());
+        Medico medico = new Medico(Main.getIdClinica(), nome, crmInt, telefone, email, especialidade.getId());
         
         dao.insert(medico);
 
