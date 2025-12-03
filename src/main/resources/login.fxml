@@ -1,73 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="500" prefWidth="420"
-           xmlns="http://javafx.com/javafx/8"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="org.projeto.API.fxml.LoginController"
-           style="-fx-background-color: #E9ECF1;">
+<StackPane prefHeight="500" prefWidth="420" style="-fx-background-color: #E9ECF1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.projeto.API.fxml.LoginController">
 
     <children>
 
-        <VBox alignment="TOP_CENTER"
-              maxWidth="420"
-              spacing="0"
-              style="-fx-background-color: white;
-                     -fx-background-radius: 22;
-                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 30, 0, 0, 6);">
-
-            <!-- CABEÇALHO -->
-            <HBox alignment="CENTER_LEFT"
-                  prefHeight="90"
-                  spacing="14"
-                  style="-fx-background-color: linear-gradient(to right, #1976FF, #4D9BFF);
-                         -fx-background-radius: 22 22 0 0;">
-                <padding><Insets left="25" right="25"/></padding>
-
-                <Label text="🔐" style="-fx-font-size: 32; -fx-text-fill: white;"/>
-                <Label text="Login"
-                       style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: white;"/>
-            </HBox>
-
-            <!-- CORPO DO LOGIN -->
-            <VBox spacing="20" alignment="CENTER"
-                  style="-fx-padding: 35 35 40 35;">
-
-                <!-- EMAIL -->
-                <VBox spacing="6">
-                    <Label text="Email" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
-                    <TextField fx:id="inputEmail"
-                               promptText="Digite seu e-mail"
-                               style="-fx-background-radius: 12;
-                                      -fx-padding: 10;
-                                      -fx-font-size: 15;"/>
-                </VBox>
-
-                <!-- SENHA -->
-                <VBox spacing="6">
-                    <Label text="Senha" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
-                    <PasswordField fx:id="inputSenha"
-                                   promptText="Digite sua senha"
-                                   style="-fx-background-radius: 12;
-                                          -fx-padding: 10;
-                                          -fx-font-size: 15;"/>
-                </VBox>
-
-                <!-- BOTÃO ENTRAR -->
-                <Button text="Entrar"
-                        prefHeight="45" prefWidth="200"
-                        onAction="#login"
-                        style="-fx-background-color: linear-gradient(to right, #1976FF, #4D9BFF);
-                               -fx-text-fill: white;
-                               -fx-background-radius: 12;
-                               -fx-font-size: 18;
-                               -fx-font-weight: bold;"/>
-
-            </VBox>
+        <VBox alignment="TOP_CENTER" maxWidth="420" spacing="0" style="-fx-background-color: white;                      -fx-background-radius: 22;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 30, 0, 0, 6);">
+   <children>
+   
+               <!-- CABEÇALHO -->
+               <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="420.0" spacing="14" style="-fx-background-color: linear-gradient(to right, #1976FF, #4D9BFF);                          -fx-background-radius: 22 22 0 0;">
+                   <padding>
+                  <Insets left="25" right="25" />
+               </padding>
+      <children>
+      
+                      <Label style="-fx-font-size: 32; -fx-text-fill: white;" text="🔐" />
+                      <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: white;" text="Login" />
+      </children>
+               </HBox>
+   
+               <!-- CORPO DO LOGIN -->
+               <VBox alignment="CENTER" spacing="20" style="-fx-padding: 35 35 40 35;">
+      <children>
+                  <ImageView fitHeight="253.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.jpeg" />
+                     </image>
+                  </ImageView>
+      
+                      <!-- EMAIL -->
+                      <VBox spacing="6">
+         <children>
+                             <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Email" />
+                             <TextField fx:id="inputEmail" promptText="Digite seu e-mail" style="-fx-background-radius: 12;                                       -fx-padding: 10;                                       -fx-font-size: 15;" />
+         </children>
+                      </VBox>
+      
+                      <!-- SENHA -->
+                      <VBox spacing="6">
+         <children>
+                             <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Senha" />
+                             <PasswordField fx:id="inputSenha" promptText="Digite sua senha" style="-fx-background-radius: 12;                                           -fx-padding: 10;                                           -fx-font-size: 15;" />
+         </children>
+                      </VBox>
+      
+                      <!-- BOTÃO ENTRAR -->
+                      <Button onAction="#login" prefHeight="45" prefWidth="200" style="-fx-background-color: linear-gradient(to right, #1976FF, #4D9BFF);                                -fx-text-fill: white;                                -fx-background-radius: 12;                                -fx-font-size: 18;                                -fx-font-weight: bold;" text="Entrar" />
+      </children>
+   
+               </VBox>
+   </children>
         </VBox>
 
     </children>
